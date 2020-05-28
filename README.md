@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U =100x100)
+<img src="https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U" width="100" height="100">
 
 # Project Title 
 
