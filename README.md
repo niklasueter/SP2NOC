@@ -1,6 +1,6 @@
-<img src="https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U" width="100" height="100">
-
-# Project Title 
+<div><img src="https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U" width="100" height="100"> # Project Title 
+</div>
+</hr>
 
 One Paragraph of project description goes here
 
