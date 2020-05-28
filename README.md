@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U)
+![logo](https://raw.githubusercontent.com/nertsam/SP2NOC/master/noc-logo.png?token=ABFGZSD66QJZYJIPFIBXGV263ES7U =100x100)
 
 # Project Title 
 
