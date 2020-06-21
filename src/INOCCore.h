@@ -22,24 +22,14 @@
  * SOFTWARE.
  */
 
-
-#include "verilog/rtl/obj_dir/Vcounter.h"
-#include "verilated.h"
-#include <iostream>
-#include <systemc>
-#include <memory>
+#ifndef SP2NOC_INOCCORE_H
+#define SP2NOC_INOCCORE_H
 
 
-int sc_main(int argc, char** argv) {
-	Verilated::commandArgs(argc, argv);
+class INOCCore {
+
+	virtual void write() = 0;
+};
 
 
-	while (!Verilated::gotFinish()) {
-		cout << "@" << sc_time_stamp() <<" De-Asserting Enable\n" << endl;
-
-		sc_start(1, SC_NS);
-
-	}
-
-	exit(EXIT_SUCCESS);
-}
+#endif //SP2NOC_INOCCORE_H

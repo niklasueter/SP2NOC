@@ -22,24 +22,4 @@
  * SOFTWARE.
  */
 
-
-#include "verilog/rtl/obj_dir/Vcounter.h"
-#include "verilated.h"
-#include <iostream>
-#include <systemc>
-#include <memory>
-
-
-int sc_main(int argc, char** argv) {
-	Verilated::commandArgs(argc, argv);
-
-
-	while (!Verilated::gotFinish()) {
-		cout << "@" << sc_time_stamp() <<" De-Asserting Enable\n" << endl;
-
-		sc_start(1, SC_NS);
-
-	}
-
-	exit(EXIT_SUCCESS);
-}
+#include "INOCCore.h"

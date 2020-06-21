@@ -22,24 +22,55 @@
  * SOFTWARE.
  */
 
+#ifndef SP2NOC_FLIT_H
+#define SP2NOC_FLIT_H
 
-#include "verilog/rtl/obj_dir/Vcounter.h"
-#include "verilated.h"
+#include <stdint.h>
+#include <iosfwd>
 #include <iostream>
-#include <systemc>
-#include <memory>
 
 
-int sc_main(int argc, char** argv) {
-	Verilated::commandArgs(argc, argv);
-
-
-	while (!Verilated::gotFinish()) {
-		cout << "@" << sc_time_stamp() <<" De-Asserting Enable\n" << endl;
-
-		sc_start(1, SC_NS);
-
+struct Coordinate {
+	unsigned int x, y;
+	bool operator==(const Coordinate& other)
+	{
+		return ((x == other.x) && (y == other.y));
 	}
+};
 
-	exit(EXIT_SUCCESS);
+enum FlitType {
+	FLIT_TYPE_HEAD = 0,
+	FLIT_TYPE_BODY,
+	FLIT_TYPE_TAIL
+};
+
+
+template<unsigned size>
+struct Payload {
+	unsigned int data[size];
+};
+
+
+struct Flit {
+	unsigned int src_id;
+	unsigned int dst_id;
+	unsigned int vc_id; // Virtual Channel
+	FlitType flit_type;	// The flit type (FLIT_TYPE_HEAD, FLIT_TYPE_BODY, FLIT_TYPE_TAIL)
+	int sequence_no;		// The sequence number of the flit inside the packet
+	int sequence_length;
+	Payload<12> payload;	// Optional payload
+	double timestamp;		// Unix timestamp at packet generation
+	int hop_no;			// Current number of hops from source to destination
+
+	int hub_relay_node;
+
+
+
+	};
+
+std::ostream& operator<<(std::ostream& os, const Flit& flit) {
+	os << flit.vc_id;
+	return os;
 }
+
+#endif //SP2NOC_FLIT_H
