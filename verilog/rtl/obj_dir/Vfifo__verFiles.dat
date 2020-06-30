@@ -1,0 +1,12 @@
+# DESCRIPTION: Verilator output: Timestamp data for --skip-identical.  Delete at will.
+C "-Wall -sc fifo.v"
+S   4117944 13387396  1433741508 "/usr/bin/verilator_bin"
+S      1472 55188010  1593515448 "fifo.v"
+T      9541 55188964  1593516643 "obj_dir/Vfifo.cpp"
+T      3156 55188926  1593516643 "obj_dir/Vfifo.h"
+T      1690 55189027  1593516643 "obj_dir/Vfifo.mk"
+T       569 55188925  1593516643 "obj_dir/Vfifo__Syms.cpp"
+T       996 55187868  1593516643 "obj_dir/Vfifo__Syms.h"
+T       202 55189030  1593516643 "obj_dir/Vfifo__ver.d"
+T         0        0  1593516643 "obj_dir/Vfifo__verFiles.dat"
+T      1082 55189016  1593516643 "obj_dir/Vfifo_classes.mk"
