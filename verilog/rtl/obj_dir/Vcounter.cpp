@@ -30,8 +30,7 @@ VL_SC_CTOR_IMP(Vcounter)
     __Vcellinp__v__reset = VL_RAND_RESET_I(1);
     __Vcellinp__v__clk = VL_RAND_RESET_I(1);
     __Vcellinp__v__enable = VL_RAND_RESET_I(1);
-    __Vcellout__v__out = VL_RAND_RESET_I(8);
-    v__DOT__reg_out = VL_RAND_RESET_I(8);
+	 __Vcellout__v__out = VL_RAND_RESET_I(4);
     __Vclklast__TOP____Vcellinp__v__clk = VL_RAND_RESET_I(1);
 }
 
@@ -92,18 +91,22 @@ VL_INLINE_OPT void Vcounter::_combo__TOP__1(Vcounter__Syms* __restrict vlSymsp) 
 VL_INLINE_OPT void Vcounter::_sequent__TOP__3(Vcounter__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_PRINTF("    Vcounter::_sequent__TOP__3\n"); );
     Vcounter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+	// Variables
+	VL_SIG8(__Vdly____Vcellout__v__out, 3, 0);
+	//char	__VpadToAlign25[3];
     // Body
+	__Vdly____Vcellout__v__out = vlTOPp->__Vcellout__v__out;
     // ALWAYS at counter.v:9
     if (vlTOPp->__Vcellinp__v__reset) {
-	vlTOPp->v__DOT__reg_out = 0U;
+		__Vdly____Vcellout__v__out = 0U;
     } else {
 	if (vlTOPp->__Vcellinp__v__enable) {
-	    vlTOPp->v__DOT__reg_out = (0xffU & ((IData)(1U) 
-						+ (IData)(vlTOPp->__Vcellout__v__out)));
+		__Vdly____Vcellout__v__out = (0xfU & ((IData) (1U)
+											  + (IData) (vlTOPp->__Vcellout__v__out)));
 	}
     }
-    VL_ASSIGN_SII(8,vlTOPp->out, vlTOPp->v__DOT__reg_out);
-    vlTOPp->__Vcellout__v__out = vlTOPp->v__DOT__reg_out;
+	vlTOPp->__Vcellout__v__out = __Vdly____Vcellout__v__out;
+	VL_ASSIGN_SII(4, vlTOPp->out, vlTOPp->__Vcellout__v__out);
 }
 
 VL_INLINE_OPT void Vcounter::_combo__TOP__4(Vcounter__Syms* __restrict vlSymsp) {
@@ -120,8 +123,7 @@ void Vcounter::_settle__TOP__5(Vcounter__Syms* __restrict vlSymsp) {
     // Body
     VL_ASSIGN_ISI(1,vlTOPp->__Vcellinp__v__reset, vlTOPp->reset);
     VL_ASSIGN_ISI(1,vlTOPp->__Vcellinp__v__enable, vlTOPp->enable);
-    VL_ASSIGN_SII(8,vlTOPp->out, vlTOPp->v__DOT__reg_out);
-    vlTOPp->__Vcellout__v__out = vlTOPp->v__DOT__reg_out;
+	VL_ASSIGN_SII(4, vlTOPp->out, vlTOPp->__Vcellout__v__out);
 }
 
 void Vcounter::_eval(Vcounter__Syms* __restrict vlSymsp) {

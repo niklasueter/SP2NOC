@@ -1,18 +1,15 @@
-module counter(
- output [7:0] out,
- input 	     enable,
- input 	     clk,
- input 	     reset);
+module counter #(parameter WIDTH=4)(
+ output[WIDTH-1:0] out,
+ input enable  ,
+ input clk     ,
+ input reset);
 
-   reg [7:0] reg_out;
+reg [WIDTH-1:0] out;
 
 always @(posedge(clk))
-  if (reset) begin
-     reg_out <= 8'b0 ;
-  end else if (enable) begin
-  reg_out <= out + 1;
-  end
-assign out = reg_out;
+if (reset) begin
+  out <= {WIDTH{1'b0}};
+end else if (enable) begin
+  out <= out + 1;
+end
 endmodule
-
-

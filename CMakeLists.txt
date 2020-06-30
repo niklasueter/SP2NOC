@@ -18,11 +18,15 @@ find_library(systemc systemc ${SYSTEMC_PATH}/lib-linux64)
 
 link_directories(${SYSTEMC_PATH}/lib-linux64)
 
+# VERILATOR
+execute_process(COMMAND verilator --sc WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/verilog/rtl/counter.v RESULT_VARIABLE result)
+message(STATUS "${result}")
 
 add_executable(sp2noc main.cpp
         ${VERILATED_PATH}/Vcounter.cpp
+        ${VERILATED_PATH}/Vfifo.cpp
         ${VERILATOR_PATH}/include/verilated.cpp
         src/Flit.h src/INOCCore.cpp src/INOCCore.h src/NOC.cpp src/NOC.h)
 
 target_link_libraries(sp2noc systemc)
-target_link_libraries(sp2noc ${VERILATED_PATH}/Vcounter__ALL.a)
+target_link_libraries(sp2noc ${VERILATED_PATH}/Vcounter__ALL.a ${VERILATED_PATH}/Vfifo__ALL.a)

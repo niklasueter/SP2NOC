@@ -31,20 +31,19 @@ SC_MODULE(Vcounter) {
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
-    VL_SIG8(v__DOT__reg_out,7,0);
-    //char	__VpadToAlign21[3];
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     VL_SIG8(__Vcellinp__v__clk,0,0);
     VL_SIG8(__Vcellinp__v__reset,0,0);
     VL_SIG8(__Vcellinp__v__enable,0,0);
-    VL_SIG8(__Vcellout__v__out,7,0);
+	VL_SIG8(__Vcellout__v__out, 3, 0);
     VL_SIG8(__Vclklast__TOP____Vcellinp__v__clk,0,0);
-    //char	__VpadToAlign33[3];
+	//char	__VpadToAlign29[3];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
+	//char	__VpadToAlign36[4];
     Vcounter__Syms*	__VlSymsp;		// Symbol table
     
     // PARAMETERS

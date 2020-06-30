@@ -24,6 +24,7 @@
 
 
 #include "verilog/rtl/obj_dir/Vcounter.h"
+#include "verilog/rtl/obj_dir/Vfifo.h"
 #include "verilated.h"
 #include <iostream>
 #include <systemc>
@@ -33,13 +34,42 @@
 int sc_main(int argc, char** argv) {
 	Verilated::commandArgs(argc, argv);
 
+	std::unique_ptr<Vfifo> fifo = std::make_unique<Vfifo>("fifo");
+
+	sc_clock clk{"clk", 12, SC_NS};
+	sc_signal<bool> wr;
+	sc_signal<bool> full;
+	sc_signal<uint32_t> fill;
+	sc_signal<bool> rd;
+	sc_signal<bool> empty;
+	sc_signal<uint32_t> in_data;
+	sc_signal<uint32_t> out_data;
+
+	fifo->i_clk(clk);
+	fifo->i_data(in_data);
+	fifo->i_wr(wr);
+	fifo->o_full(full);
+	fifo->o_fill(fill);
+	fifo->i_rd(rd);
+	fifo->o_data(out_data);
+	fifo->o_empty(empty);
+
+
+	in_data = 1;
+	wr = 1;
+
+	in_data = 2;
+	wr = 1;
+
+	in_data = 3;
+	wr = 1;
 
 	while (!Verilated::gotFinish()) {
-		cout << "@" << sc_time_stamp() <<" De-Asserting Enable\n" << endl;
-
-		sc_start(1, SC_NS);
+		cout << out_data << endl;
+		sc_start(12, SC_NS);
 
 	}
 
+	fifo->final();
 	exit(EXIT_SUCCESS);
 }
